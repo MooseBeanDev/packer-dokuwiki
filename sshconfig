@@ -1,0 +1,6 @@
+Host gitserv
+    Hostname GITDOMAIN
+    IdentityFile /home/centos/gitkey
+    IdentitiesOnly yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null

@@ -6,7 +6,10 @@
     "region": "us-east-2",
     "admin_username": "admin",
     "admin_password_hash": "$1$YPnSdVNP$WttdnBXxmA.5lP4DrhqwN/",
-    "wiki_title": "McCown Wiki"
+    "wiki_title": "McCown Wiki",
+    "git_domain": "gitlab.com",
+    "git_initialized": "true",
+    "git_project": "bmccown/dokuwiki-backup.git"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -24,7 +27,50 @@
     "environment_vars": [
       "WIKI_TITLE={{user `wiki_title`}}",
       "ADMIN_USERNAME={{user `admin_username`}}",
+      "GIT_INITIALIZED={{user `git_initialized`}}",
       "ADMIN_PASSWORD_HASH={{user `admin_password_hash`}}"
+    ]
+  },
+  {
+    "type": "file",
+    "source": "sshconfig",
+    "destination": "/home/centos/sshconfig"
+  },
+  {
+    "type": "file",
+    "source": "backup-dokuwiki.sh",
+    "destination": "/scripts/backup-dokuwiki.sh"
+  },
+  {
+    "type": "file",
+    "source": "restore-dokuwiki.sh",
+    "destination": "/scripts/restore-dokuwiki.sh"
+  },
+  {
+    "type": "file",
+    "source": "git-init.sh",
+    "destination": "/scripts/git-init.sh"
+  },
+  {
+    "type": "file",
+    "source": "git-clone.sh",
+    "destination": "/scripts/git-clone.sh"
+  },
+  {
+    "type": "file",
+    "source": "gitkey",
+    "destination": "/home/centos/gitkey"
+  },
+  {
+    "type": "shell",
+    "script": "dokuwiki-config.sh",
+    "environment_vars": [
+      "WIKI_TITLE={{user `wiki_title`}}",
+      "ADMIN_USERNAME={{user `admin_username`}}",
+      "ADMIN_PASSWORD_HASH={{user `admin_password_hash`}}",
+      "GIT_DOMAIN={{user `git_domain`}}",
+      "GIT_INITIALIZED={{user `git_initialized`}}",
+      "GIT_PROJECT={{user `git_project`}}"
     ]
   }
   ]
