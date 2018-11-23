@@ -26,3 +26,11 @@ sudo chown -R apache:apache /var/www/html/wiki
 sudo chmod 755 -R /var/www/html/wiki
 sudo chmod 700 -R /var/www/html/wiki/data
 sudo chmod 700 -R /var/www/html/wiki/conf
+
+if ! sudo grep '/var/www/html/wiki' /etc/httpd/conf/httpd.conf
+then echo -e '<Directory "/var/www/html/wiki">\n    Options FollowSymLinks\n    AllowOverride All\n    Require all granted\n</Directory>' | sudo tee -a /etc/httpd/conf/httpd.conf
+fi
+
+sudo sed -i s/SERVERADMIN/$SERVER_ADMIN/g /scripts/encrypt-dokuwiki.sh
+sudo sed -i s/SERVERNAME/$SERVER_NAME/g /scripts/encrypt-dokuwiki.sh
+sudo sed -i s/SERVERALIAS/$SERVER_ALIAS/g /scripts/encrypt-dokuwiki.sh

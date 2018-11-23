@@ -9,7 +9,10 @@
     "wiki_title": "McCown Wiki",
     "git_domain": "gitlab.com",
     "git_initialized": "true",
-    "git_project": "bmccown/dokuwiki-backup.git"
+    "git_project": "bmccown/dokuwiki-backup.git",
+    "server_admin": "bmccown93@gmail.com",
+    "server_name": "wiki.benmccown.us",
+    "server_alias": "wiki.benmccown.us"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -48,6 +51,11 @@
   },
   {
     "type": "file",
+    "source": "encrypt-dokuwiki.sh",
+    "destination": "/scripts/encrypt-dokuwiki.sh"
+  },
+  {
+    "type": "file",
     "source": "git-init.sh",
     "destination": "/scripts/git-init.sh"
   },
@@ -70,7 +78,10 @@
       "ADMIN_PASSWORD_HASH={{user `admin_password_hash`}}",
       "GIT_DOMAIN={{user `git_domain`}}",
       "GIT_INITIALIZED={{user `git_initialized`}}",
-      "GIT_PROJECT={{user `git_project`}}"
+      "GIT_PROJECT={{user `git_project`}}",
+      "SERVER_ADMIN={{user `server_admin`}}",
+      "SERVER_NAME={{user `server_name`}}",
+      "SERVER_ALIAS={{user `server_alias`}}"
     ]
   }
   ]
