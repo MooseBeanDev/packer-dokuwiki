@@ -22,6 +22,8 @@ else
 	/scripts/git-init.sh $GIT_PROJECT
 fi
 
+echo "@reboot centos /scripts/restore-dokuwiki.sh &" | sudo tee -a /etc/crontab
+
 sudo chown -R apache:apache /var/www/html/wiki
 sudo chmod 755 -R /var/www/html/wiki
 sudo chmod 700 -R /var/www/html/wiki/data
