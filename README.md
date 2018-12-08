@@ -16,17 +16,46 @@ The installation steps assume you have the following:
 Packer (https://www.packer.io/)
 An AWS Account
 AWS config and credentials setup in your .aws directory (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+A blank git project to backup the wiki (I'm using GitLab for the free private repos, use your own as you'd like)
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+A step by step walkthrough to deploy a Dokuwiki AMI
 
-Say what the step will be
+Edit the variables.json file with your values. Each value will be explained below.
 
 ```
-Give the example
+{
+  "instance_type": "t2.micro",
+  "region": "us-east-2",
+  "source_ami": "ami-9c0638f9",
+  "admin_username": "admin",
+  "admin_password_hash": "$1$YPnSdVNP$WttdnBXxmA.5lP4DrhqwN/",
+  "wiki_title": "McCown Wiki",
+  "git_domain": "gitlab.com",
+  "git_initialized": "false",
+  "git_project": "bmccown/dokuwiki-backup.git",
+  "server_admin": "youremail@gmail.com",
+  "server_name": "wiki.example.com",
+  "server_alias": "wiki.example.com"
+}
 ```
+
+instance_type: Self explanatory. EC2 Instance Type
+region: The region to deploy the AMI to
+source_ami: The CentOS 7 AMI to use as a base image. You may have to go find this [here](https://aws.amazon.com/marketplace/pp/B00O7WM7QW)
+admin_username: The username you'll use to login to dokuwiki
+admin_password_hash: The password hash you'll use to login. This example here will be "Test123" minus the quotes. The easiest thing is to just keep this value, deploy dokuwiki, create a new user, delete the default admin user, and then from there on out the wiki will be deployed via your backed up git repo
+wiki_title: Sets the wiki title in the Dokuwiki configuration files
+git_domain: The domain where your git repository is hosted
+git_initialized: If this is set to false the project will install dokuwiki, configure it, and back it up to your git repo. If it's set to true then dokuwiki will be restored from your git repo.
+git_project: This will be joined with the git_domain value to make the connection string to set as the upstream for your git repo
+server_admin: For dokuwiki config file purposes
+server_name: For dokuwiki config file purposes
+server_alias: For dokuwiki config file purposes
+
+Next you'll need to ensure your Git repository is manageable via an SSH key. Edit the gitkey file and insert your own key here.
 
 And repeat
 
