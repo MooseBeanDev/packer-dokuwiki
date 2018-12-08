@@ -1,0 +1,14 @@
+{
+  "instance_type": "t2.micro",
+  "region": "us-east-2",
+  "source_ami": "ami-9c0638f9",
+  "admin_username": "admin",
+  "admin_password_hash": "$1$YPnSdVNP$WttdnBXxmA.5lP4DrhqwN/",
+  "wiki_title": "McCown Wiki",
+  "git_domain": "gitlab.com",
+  "git_initialized": "true",
+  "git_project": "bmccown/dokuwiki-backup.git",
+  "server_admin": "youremail@gmail.com",
+  "server_name": "wiki.example.com",
+  "server_alias": "wiki.example.com"
+}
