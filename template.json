@@ -1,22 +1,7 @@
 {
-  "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "instance_type": "t2.micro",
-    "region": "us-east-2",
-    "admin_username": "admin",
-    "admin_password_hash": "$1$YPnSdVNP$WttdnBXxmA.5lP4DrhqwN/",
-    "wiki_title": "McCown Wiki",
-    "git_domain": "gitlab.com",
-    "git_initialized": "true",
-    "git_project": "bmccown/dokuwiki-backup.git",
-    "server_admin": "bmccown93@gmail.com",
-    "server_name": "wiki.benmccown.us",
-    "server_alias": "wiki.benmccown.us"
-  },
   "builders": [{
     "type": "amazon-ebs",
-    "source_ami": "ami-9c0638f9",
+    "source_ami": "{{user `source_ami`}}",
     "instance_type": "{{user `instance_type`}}",
     "region": "{{user `region`}}",
     "ssh_username": "centos",
