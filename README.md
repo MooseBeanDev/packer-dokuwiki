@@ -41,7 +41,7 @@ Edit the variables.json file with your values. Each value will be explained belo
   "server_alias": "wiki.example.com"
 }
 ```
-
+```
 instance_type: Self explanatory. EC2 Instance Type
 region: The region to deploy the AMI to
 source_ami: The CentOS 7 AMI to use as a base image. You may have to go find this [here](https://aws.amazon.com/marketplace/pp/B00O7WM7QW)
@@ -54,6 +54,7 @@ git_project: This will be joined with the git_domain value to make the connectio
 server_admin: For dokuwiki config file purposes
 server_name: For dokuwiki config file purposes
 server_alias: For dokuwiki config file purposes
+```
 
 Next you'll need to ensure your Git repository is manageable via an SSH key. Edit the gitkey file and insert your own key here.
 
