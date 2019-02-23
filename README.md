@@ -56,39 +56,16 @@ server_name: For dokuwiki config file purposes
 server_alias: For dokuwiki config file purposes
 ```
 
-Next you'll need to ensure your Git repository is manageable via an SSH key. Edit the gitkey file and insert your own key here.
+Next you'll need to ensure your Git repository is manageable via an SSH key. Edit the gitkey file and insert your own private key here.
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Once that is done, deploy using:
 
 ```
-Give an example
+packer build template.json -var-file=variables.json
 ```
 
-### And coding style tests
+After building the image for the first time, the wiki will be committed to your git repository. Edit your variables above to change git_initialized to true so that persistency can be maintained through your git repo.
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
@@ -98,24 +75,4 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Feel free to fork and create a pull request if you would like to contribute. This is a personal project but contributions are welcome.
