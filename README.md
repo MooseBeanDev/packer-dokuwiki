@@ -66,13 +66,6 @@ packer build template.json -var-file=variables.json
 
 After building the image for the first time, the wiki will be committed to your git repository. Edit your variables above to change git_initialized to true so that persistency can be maintained through your git repo.
 
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 ## Contributing
 
 Feel free to fork and create a pull request if you would like to contribute. This is a personal project but contributions are welcome.
